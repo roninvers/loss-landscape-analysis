@@ -1,6 +1,4 @@
-# FILE: visualization.py
-# Purpose: 2D and 3D loss landscape visualization
-# Copy this entire content into a file named 'visualization.py'
+
 
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
