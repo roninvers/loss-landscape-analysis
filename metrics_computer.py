@@ -1,6 +1,4 @@
-# FILE: metrics_computer.py
-# Purpose: Hessian and geometric metrics computation
-# Copy this entire content into a file named 'metrics_computer.py'
+
 
 import torch
 import torch.nn as nn
