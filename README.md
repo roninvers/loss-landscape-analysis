@@ -1,4 +1,6 @@
 # Loss Landscape Analysis
+
+## Note: Do refer the landscape_report.pdf for detailed analysis.
 ## Overview
 
 This repository contains a comprehensive empirical investigation into how skip connections and batch normalization affect loss landscape geometry and neural network optimization. Through controlled architectural ablations on ResNet-20 trained on CIFAR-10, we provide quantitative evidence for the importance of these components in deep learning.
