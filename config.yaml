@@ -1,0 +1,97 @@
+# Configuration File: config.yaml
+# Copy this entire content into a file named 'config.yaml' in your project root
+
+# Device Configuration (Metal Performance Shaders for M4 Mac)
+device: "mps"                    # Options: "mps" (M4 Mac), "cuda" (NVIDIA), "cpu"
+dtype: "float32"                 # Must be float32 for MPS stability
+batch_size: 32                   # Batch size for training and evaluation
+num_workers: 0                   # MUST be 0 for MPS (no multiprocessing)
+pin_memory: false                # False for MPS compatibility
+channels_last: true              # Memory layout optimization for MPS
+
+# Training Configuration
+training:
+  epochs: 20                     # Number of training epochs
+  learning_rate: 0.1             # Initial learning rate for SGD
+  momentum: 0.9                  # SGD momentum
+  weight_decay: 1e-4             # L2 regularization
+  optimizer: "sgd"               # Options: "sgd", "adam"
+  scheduler: "cosine"            # Learning rate scheduler: "cosine" or "step"
+  use_mixed_precision: false     # Avoid for MPS stability
+
+# Loss Landscape Analysis Configuration
+landscape:
+  num_samples: 10                # Number of grid points in each direction (50x50 grid)
+  alpha_range: [-1.0, 1.0]       # Range for first direction
+  beta_range: [-1.0, 1.0]        # Range for second direction
+  normalize_directions: true     # Normalize perturbation directions
+
+# Metrics Configuration
+metrics:
+  compute_hessian: true          # Compute Hessian eigenvalues
+  compute_persistence: true      # Compute topological persistence
+  num_hessian_samples: 50        # Number of samples for Hessian estimation
+  top_k_eigenvalues: 5           # Number of top eigenvalues to track
+
+# Visualization Configuration
+visualization:
+  save_2d_plots: true            # Save 2D contour plots
+  save_3d_plots: true            # Save 3D surface plots
+  save_training_curves: true     # Save training/validation curves
+  dpi: 300                       # Resolution for saved plots
+  style: "seaborn-v0_8-darkgrid" # Matplotlib style
+  figsize_2d: [12, 10]           # Figure size for 2D plots
+  figsize_3d: [14, 10]           # Figure size for 3D plots
+
+# Dataset Configuration
+dataset:
+  name: "mnist"                  # Options: "cifar10", "mnist"
+  train_size: 60000              # Training set size (full)
+  test_size: 10000               # Test set size (full)
+  augmentation: false            # Use data augmentation
+
+# Experiment Configuration
+experiments:
+  - name: "resnet20_skip_bn"
+    model: "resnet20"
+    use_skip: true
+    use_batchnorm: true
+    
+  - name: "resnet20_skip_no_bn"
+    model: "resnet20"
+    use_skip: true
+    use_batchnorm: false
+    
+  - name: "resnet20_no_skip_bn"
+    model: "resnet20"
+    use_skip: false
+    use_batchnorm: true
+    
+  - name: "vgg16_with_bn"
+    model: "vgg16"
+    use_skip: true
+    use_batchnorm: true
+    
+  - name: "vgg16_no_bn"
+    model: "vgg16"
+    use_skip: true
+    use_batchnorm: false
+
+# Output Configuration
+output:
+  results_dir: "./results"       # Directory to save results
+  models_dir: "./models"         # Directory to save model checkpoints
+  logs_dir: "./logs"             # Directory to save logs
+  create_dirs: true              # Auto-create directories
+
+# Random Seeds (for reproducibility)
+random_seed: 42                  # Global random seed
+torch_seed: 42                   # PyTorch seed
+numpy_seed: 42                   # NumPy seed
+
+# Advanced Options
+advanced:
+  gradient_clipping: false       # Gradient clipping for stability
+  gradient_clip_value: 1.0       # Max gradient norm
+  early_stopping: false          # Early stopping on validation loss
+  patience: 10                   # Epochs to wait before early stopping
