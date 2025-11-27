@@ -1,6 +1,3 @@
-# FILE: training.py
-# Purpose: Training loop with metrics collection
-# Copy this entire content into a file named 'training.py'
 
 import torch
 import torch.nn as nn
