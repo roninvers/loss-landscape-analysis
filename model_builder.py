@@ -1,6 +1,4 @@
-# FILE: model_builder.py (COMPLETE CORRECTED VERSION)
-# Purpose: Neural network architectures (ResNet-20, VGG-16) with dynamic input channels
-# This version works with BOTH MNIST (1 channel) and CIFAR-10 (3 channels)
+
 
 import torch
 import torch.nn as nn
