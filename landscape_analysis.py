@@ -1,6 +1,4 @@
-# FILE: landscape_analysis.py
-# Purpose: Loss landscape probing methods
-# Copy this entire content into a file named 'landscape_analysis.py'
+
 
 import torch
 import torch.nn as nn
