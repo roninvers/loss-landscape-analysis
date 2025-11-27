@@ -1,6 +1,4 @@
-# FILE: data_loader.py
-# Purpose: Dataset loading and preprocessing for CIFAR-10 and MNIST
-# Copy this entire content into a file named 'data_loader.py'
+
 
 import torch
 import torchvision.transforms as transforms
