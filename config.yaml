@@ -1,5 +1,3 @@
-# Configuration File: config.yaml
-# Copy this entire content into a file named 'config.yaml' in your project root
 
 # Device Configuration (Metal Performance Shaders for M4 Mac)
 device: "mps"                    # Options: "mps" (M4 Mac), "cuda" (NVIDIA), "cpu"
